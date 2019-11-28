@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.applitools</groupId>
+    <artifactId>Hackathon</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Hackathon</name>
+    <url>http://www.example.com</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <version.java>11</version.java>
+        <!-- Dependency versions -->
+        <version.testng_runner>7.0.0</version.testng_runner>
+        <version.assertj>3.12.1</version.assertj>
+        <version.selenium_webdriver>3.141.59</version.selenium_webdriver>
+        <version.applitools>3.157.10</version.applitools>
+        <version.selenium_support>3.141.59</version.selenium_support>
+        <version.apache_poi>4.0.1</version.apache_poi>
+        <version.apache_poi_ooxml>4.0.1</version.apache_poi_ooxml>
+        <!-- Plugin versions -->
+        <version.maven_compiler>3.8.0</version.maven_compiler>
+        <version.maven_driver_binary_downloader>1.0.17</version.maven_driver_binary_downloader>
+        <version.maven_failsafe>2.22.0</version.maven_failsafe>
+        <!-- Configurations -->
+        <testSuite>hackathon.xml</testSuite>
+        <platform></platform>
+        <browser>chrome</browser>
+        <overwrite.binaries>false</overwrite.binaries>
+        <headless>false</headless>
+        <eyesAPIKey>SzeyIJrjJxtjkMBWPJvmRUHOzJ108ngjRkQzwC103TzeN24110</eyesAPIKey>
+        <batch>Hackathon</batch>
+        <applicationName>Hackathon App</applicationName>
+        <appVersion>V1</appVersion>
+    </properties>
+    <build>
+        <finalName>Hackathon</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.maven_compiler}</version>
+                <configuration>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.lazerycode.selenium</groupId>
+                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                <version>${version.maven_driver_binary_downloader}</version>
+                <configuration>
+                    <rootStandaloneServerDirectory>${project.basedir}/src/resources/webdrivers/selenium_standalone_binaries
+                    </rootStandaloneServerDirectory>
+                    <downloadedZipFileDirectory>${project.basedir}/src/resources/webdrivers/selenium_standalone_zips</downloadedZipFileDirectory>
+                    <customRepositoryMap>${project.basedir}/src/resources/xml/RepositoryMap.xml</customRepositoryMap>
+                    <operatingSystems>
+                        <windows>true</windows>
+                        <linux>true</linux>
+                        <osx>true</osx>
+                    </operatingSystems>
+                    <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>selenium</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${version.maven_failsafe}</version>
+                <configuration>
+                    <systemProperties>
+                        <browser>${browser}</browser>
+                        <headless>${headless}</headless>
+                        <!--Set properties passed in by the driver binary downloader -->
+                        <!--suppress UnresolvedMavenProperty -->
+                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                        <eyesAPIKey>${eyesAPIKey}</eyesAPIKey>
+                        <batchInfo>${batch}</batchInfo>
+                        <appName>${applicationName}</appName>
+                        <appVersion>${appVersion}</appVersion>
+                    </systemProperties>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${project.basedir}/src/test/java/com/hackathon/suites/${testSuite}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${version.testng_runner}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${version.selenium_webdriver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>${version.selenium_support}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.applitools</groupId>
+            <artifactId>eyes-selenium-java3</artifactId>
+            <version>${version.applitools}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${version.assertj}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${version.apache_poi}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${version.apache_poi_ooxml}</version>
+        </dependency>
+    </dependencies>
+</project>
