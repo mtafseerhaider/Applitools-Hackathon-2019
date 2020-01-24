@@ -120,7 +120,7 @@ https://eyes.applitools.com/app/test-results/00000251827419869710?accountId=Qo_5
 
 ## Author
 
-* MUHAMMAD TAFSEER HAIDER, Test Automation Developer & DevOps Evangelist from Pakistan
+* MUHAMMAD TAFSEER HAIDER, Principal SQA Automation Engineer, Developer & DevOps Advocate - Tester by Profession, Developer by Passion
 
 ## Contact
 
