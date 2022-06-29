@@ -21,7 +21,7 @@
         <version.selenium_webdriver>3.141.59</version.selenium_webdriver>
         <version.applitools>3.157.10</version.applitools>
         <version.selenium_support>3.141.59</version.selenium_support>
-        <version.apache_poi>4.0.1</version.apache_poi>
+        <version.apache_poi>4.1.1</version.apache_poi>
         <version.apache_poi_ooxml>4.0.1</version.apache_poi_ooxml>
         <!-- Plugin versions -->
         <version.maven_compiler>3.8.0</version.maven_compiler>
