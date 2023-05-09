@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.java>11</version.java>
         <!-- Dependency versions -->
-        <version.testng_runner>7.0.0</version.testng_runner>
+        <version.testng_runner>7.5.1</version.testng_runner>
         <version.assertj>3.12.1</version.assertj>
         <version.selenium_webdriver>3.141.59</version.selenium_webdriver>
         <version.applitools>3.157.10</version.applitools>
